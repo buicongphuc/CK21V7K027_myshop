@@ -1,6 +1,9 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart';
+import '../../models/product.dart';
 import '../../models/product.dart';
 
-class ProducsManager {
+class ProducsManager with ChangeNotifier {
   final List<Product> _item = [
     Product(
       id: 'p1',
@@ -56,5 +59,33 @@ class ProducsManager {
     } catch (error) {
       return null;
     }
+  }
+
+  void addProduct(Product product) {
+    _item.add(
+      product.copyWith(
+        id: 'p${DateTime.now().toIso8601String()}',
+      ),
+    );
+    notifyListeners();
+  }
+
+  void updateProduct(Product product) {
+    final index = _item.indexWhere((item) => item.id == product.id);
+    if (index >= 0) {
+      _item[index] = product;
+      notifyListeners();
+    }
+  }
+
+  void toggleFavoriteStatus(Product product) {
+    final savedStatus = product.isFavorite;
+    product.isFavorite = !savedStatus;
+  }
+
+  void deleteProduct(String id) {
+    final index = _item.indexWhere((item) => item.id == id);
+    _item.removeAt(index);
+    notifyListeners();
   }
 }
