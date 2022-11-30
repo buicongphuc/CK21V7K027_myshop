@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'package:myshop/ui/products/product_detail_screen.dart';
+import 'package:myshop/ui/products/product_detail_screen.dart';
+import 'package:myshop/ui/products/product_detail_screen.dart';
 // import 'package:myshop/ui/products/product_overview_screen.dart';
-// import 'package:myshop/ui/products/products_manager.dart';
+import 'package:myshop/ui/products/products_manager.dart';
 // import 'ui/products/user_products_screen.dart';
 void main() {
   runApp(const MyApp());
@@ -23,8 +24,10 @@ class MyApp extends StatelessWidget {
           secondary: Colors.deepOrange,
         ),
       ),
-      home: Container(
-        color: Colors.green,
+      home: SafeArea(
+        child: ProductDetailScreen(
+          ProducsManager().items[0],
+        ),
       )
       );
     }
