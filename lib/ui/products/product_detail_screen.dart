@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../models/product.dart';
 
-
-
-class ProductDetailScreen extends StatelessWidget { 
+class ProductDetailScreen extends StatelessWidget {
+  static const routeName = '/product-detail';
   const ProductDetailScreen(
-    this.product, { 
+    this.product, {
     super.key,
   });
 
@@ -28,9 +27,9 @@ class ProductDetailScreen extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox (height: 10), 
+            const SizedBox(height: 10),
             Text(
-              '\$${product.price}', 
+              '\$${product.price}',
               style: const TextStyle(
                 color: Colors.grey,
                 fontSize: 28,
@@ -40,7 +39,7 @@ class ProductDetailScreen extends StatelessWidget {
               height: 10,
             ),
             Container(
-              padding: const EdgeInsets.symmetric (horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               width: double.infinity,
               child: Text(
                 product.description,
